@@ -1,9 +1,9 @@
 import pathlib
-import chansons
+import songbook
 
 
 def abspath_root():
-    return pathlib.Path(chansons.__file__).parents[1]
+    return pathlib.Path(songbook.__file__).parents[1]
 
 
 def abspath_data(path):

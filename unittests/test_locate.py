@@ -1,12 +1,12 @@
 import os
 
-from chansons.locate import abspath_root, abspath_data
+from songbook.locate import abspath_root, abspath_data
 
 
 def test_root():
     root = abspath_root()
     elements = os.listdir(root)
-    assert {"chansons", "unittests"}.issubset(elements)
+    assert {"songbook", "unittests"}.issubset(elements)
 
 
 def test_data():

@@ -3,8 +3,8 @@ import pathlib
 import pytest
 import tempfile
 
-from chansons.book import source_pdf_files, build_book
-from chansons.locate import abspath_data
+from songbook.book import source_pdf_files, build_book
+from songbook.locate import abspath_data
 
 
 def test_source_pdf_files():
