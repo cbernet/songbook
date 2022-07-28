@@ -8,7 +8,7 @@ setup(
     python_requires=">=3.9",
     entry_points={
         "console_scripts": [
-            "chansons=chansons.book:main",
+            "songbook=chansons.book:main",
         ],
     },
 )
