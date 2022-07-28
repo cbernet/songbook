@@ -1,0 +1,16 @@
+build/
+
+*.py[co]
+*.egg-info
+.pytest_cache
+
+.helmignore
+
+.coverage
+.*.env
+env*
+venv*
+htmlcov
+secrets*
+
+.idea/
