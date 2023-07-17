@@ -13,12 +13,13 @@ def build_book(pdf_files: List[pathlib.Path], output: pathlib.Path) -> pathlib.P
     return output
 
 
-def source_pdf_files(folder: pathlib.Path) -> List[pathlib.Path]:
+def source_pdf_files(folder: pathlib.Path,
+                     wildcard: str = "*.pdf") -> List[pathlib.Path]:
     if not folder.exists():
         raise ValueError("folder {folder} does not exist")
-    files = list(folder.rglob("*.pdf"))
+    files = list(folder.rglob(wildcard))
     if not files:
-        raise ValueError(f"no pdf files in {folder}")
+        raise ValueError(f"no pdf files maching '{wildcard}' in {folder}")
     return files
 
 
@@ -37,6 +38,13 @@ def parse_args(args: List[str]) -> argparse.Namespace:
         action="store_const",
         help="function call does nothing",
     )
+    parser.add_argument(
+        "-p",
+        "--pattern",
+        dest="pattern",
+        default="*.pdf",
+        help="wildcard pattern to select song files",
+    )
     args = parser.parse_args(args)
     return args
 
@@ -49,7 +57,11 @@ def main(args=None):
         args = sys.argv[1:]
     args = parse_args(args)
 
-    pdf_files = source_pdf_files(args.folder)
+    try:
+        pdf_files = source_pdf_files(args.folder, args.pattern)
+    except ValueError as err:
+        print(err)
+        sys.exit(1)
 
     pprint.pprint(pdf_files)
 

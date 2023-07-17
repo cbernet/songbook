@@ -20,6 +20,8 @@ def test_source_pdf_files_no_file():
         _ = source_pdf_files(abspath_data("foo"))
     with pytest.raises(ValueError):
         _ = source_pdf_files(abspath_data("nosong"))
+    with pytest.raises(ValueError):
+        _ = source_pdf_files(abspath_data("dummy_songbook"), "*.foo")
 
 
 @pytest.fixture

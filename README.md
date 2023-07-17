@@ -2,6 +2,14 @@
 
 Manage your songbook 
 
+## Install 
+
+```commandline
+conda create -n songbook python=3.9
+pip install -r requirements.txt
+pip install -e . 
+```
+
 ## How to use it ? 
 
 * put your songs in a directory, in pdf format
